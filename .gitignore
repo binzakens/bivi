@@ -1,0 +1,5 @@
+# Ignore plugin manager files
+/plugged
+/backup
+
+.netrwhist
