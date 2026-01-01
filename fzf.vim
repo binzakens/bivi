@@ -6,7 +6,6 @@ nnoremap <leader>fo :History<CR>
 nnoremap <leader>fb :Buffers<CR>
 
 
-nnoremap <leader>fq :clist<CR>    "For quickfix list
 nnoremap <leader>fh :Helptags<CR>
 
 " Grep current string

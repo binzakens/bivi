@@ -5,7 +5,7 @@ let mapleader = " "
 " nnoremap <space> <nop>
 
 " Open netrw with <leader>cd
-nnoremap <leader>cd :Ex<CR>
+nnoremap <silent> <leader>cd :Ex<CR>
 
 " Press "``" to jump back to the last cursor position
 " nnoremap <leader>z ``
@@ -30,6 +30,15 @@ nnoremap <silent> <S-h> :bprev<CR>
 nnoremap <silent> [a :e #<CR>
 
 
+" "QuickFix lists" navigate
+nnoremap <silent> ]q :cnext<CR>
+nnoremap <silent> [q :cnext<CR>
+nnoremap <silent> ]Q :clast<CR>
+nnoremap <silent> [Q :cfirst<CR>
+
+nnoremap <silent> <leader>fq :clist<CR>    "For quickfix list
+
+
 " Resize split windows using arrow keys by pressing:
 " CTRL+UP, CTRL+DOWN, CTRL+LEFT, or CTRL+RIGHT.
 noremap <c-up> <c-w>+
@@ -45,8 +54,8 @@ nnoremap <space>O O<esc>
 
 
 " Toggle line numbers when copying in Vim
-map \m <esc>:set nu! relativenumber!<CR>
-imap \m <esc>:set nu! relativenumber!<CR>
+map <silent> \m <esc>:set nu! relativenumber!<CR>
+imap <silent> \m <esc>:set nu! relativenumber!<CR>
 
 
 " ALE on/off
