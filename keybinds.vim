@@ -13,14 +13,6 @@ nnoremap <silent> <leader>cd :Ex<CR>
 nnoremap <silent> <leader>n :nohlsearch<CR>
 
 
-" You can split the window in Vim by typing :split (:sp) or :vsplit (:vs)
-" Navigate the split view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
-
 " Naviagte between "BUFFERS" in Vim
 " Switching between the current buff and the previous buff normally, using
 " CTRL 6 (CTRL-^)
@@ -30,19 +22,28 @@ nnoremap <silent> <S-h> :bprev<CR>
 nnoremap <silent> [a :e #<CR>
 
 
-" "QuickFix lists" navigate
+                " "QuickFix Lists" navigate
 nnoremap <silent> ]q :cnext<CR>
-nnoremap <silent> [q :cnext<CR>
+nnoremap <silent> [q :cprevious<CR>
 nnoremap <silent> ]Q :clast<CR>
 nnoremap <silent> [Q :cfirst<CR>
 
-nnoremap <silent> <leader>fq :clist<CR>    "For quickfix list
+nnoremap <silent> <leader>fl :clist<CR>
+nnoremap <silent> <leader>fo :copen<CR>
+
+
+" You can split the "WINDOW" in Vim by typing :split (:sp) or :vsplit (:vs)
+" Navigate the split view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 
 
 " Resize split windows using arrow keys by pressing:
 " CTRL+UP, CTRL+DOWN, CTRL+LEFT, or CTRL+RIGHT.
-noremap <c-up> <c-w>+
-noremap <c-down> <c-w>-
+noremap <c-up> <c-w>-
+noremap <c-down> <c-w>+
 noremap <c-left> <c-w><
 noremap <c-right> <c-w>>
 

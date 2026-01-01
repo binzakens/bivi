@@ -1,7 +1,7 @@
 " Open fzf main UI memu
 nnoremap <leader>ff :Files<CR>
 " Open fzf on a RECENT file list
-nnoremap <leader>fo :History<CR>
+nnoremap <leader>fu :History<CR>
 " fzf with buffers
 nnoremap <leader>fb :Buffers<CR>
 

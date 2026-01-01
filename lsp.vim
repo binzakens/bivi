@@ -1,6 +1,6 @@
 " Enable Vim 9 LSP options
-    " \  autoComplete: v:true,
     " \  autoHighlight: v:false,
+    " \  autoComplete: v:false,
 let lspOpts = #{
     \  aleSupport: v:true,
     \  autoHighlightDiags: v:true,
@@ -9,6 +9,9 @@ let lspOpts = #{
     \  inlayHintsEnabled: v:true
     \ }
 autocmd User LspSetup call LspOptionsSet(lspOpts)
+
+
+set completeopt=menu,menuone,noselect,noinsert
 
 " Configure Clangd 21.x
 let lspServers = [#{
@@ -19,12 +22,24 @@ let lspServers = [#{
     \ }]
 autocmd User LspSetup call LspAddServer(lspServers)
 
-" Useful Vim 9 mappings for this LSP
-nnoremap <buffer> gd <scriptcmd>LspDefinition<CR>
-nnoremap <buffer> gr <scriptcmd>LspPeekReferences<CR>
-nnoremap <buffer> gi <scriptcmd>LspImplementation<CR>
-nnoremap <buffer> K  <scriptcmd>LspHover<CR>
 
+" Useful Vim 9 mappings for this LSP
+nnoremap gd :LspGotoDefinition<CR>
+nnoremap gr :LspShowReferences<CR>
+nnoremap K  :LspHover<CR>
+nnoremap gl :LspDiag current<CR>
+nnoremap <leader>nd :LspDiag next \| LspDiag current<CR>
+nnoremap <leader>pd :LspDiag prev \| LspDiag current<CR>
+inoremap <silent> <C-Space> <C-x><C-o>
+
+
+" Custom diagnostic sign characters
+autocmd User LspSetup call LspOptionsSet(#{
+    \   diagSignErrorText: '✘',
+    \   diagSignWarningText: '▲',
+    \   diagSignInfoText: '»',
+    \   diagSignHintText: '⚑',
+    \ })
 
 
 " Correct Path: Changed from /usr/local/bin to /usr/bin/clangd to match your clang --version output.
