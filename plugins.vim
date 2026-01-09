@@ -15,9 +15,15 @@ Plug 'dense-analysis/ale'
 "
 " Tokyo Night colorscheme
 Plug 'ghifarit53/tokyonight-vim'
+
+" :CMake searches for the nearest build directory and runs cmake.
+" :CMakeBuild runs the build command, and if the build is unsuccessful, it populates the quickfix list with errors, similar to running :make in a normal Makefile project.
+Plug 'cdelledonne/vim-cmake'
 "
 " Language Server Proto for clang C/C++
-Plug 'yegappan/lsp'
+" Plug 'yegappan/lsp'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
 
 call plug#end()
 

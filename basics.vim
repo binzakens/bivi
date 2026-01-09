@@ -38,8 +38,8 @@ set relativenumber
 set nocompatible
 
 " Enable folding with code
-set foldmethod=syntax
-set foldlevelstart=1  " Starts with functions closed, but top-level classes open
+" set foldmethod=syntax
+" set foldlevelstart=1  " Starts with functions closed, but top-level classes open
 
 
 " Enable type file detection. Vim will be able to try to detect the type of file in use.

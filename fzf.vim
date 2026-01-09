@@ -18,3 +18,6 @@ nnoremap <leader>fg :Rg<Space>
 " Find files in your Vim config
 nnoremap <leader>fi :Files ~/.vim<CR>
 
+" Find files in your Vim config
+nnoremap <leader>f[ :Files ~/.<CR>
+

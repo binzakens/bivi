@@ -1,49 +1,34 @@
-" Enable Vim 9 LSP options
-    " \  autoHighlight: v:false,
-    " \  autoComplete: v:false,
-let lspOpts = #{
-    \  aleSupport: v:true,
-    \  autoHighlightDiags: v:true,
-    \  highlightDiagInLine: v:true,
-    \  showDiagWithSign: v:true,
-    \  inlayHintsEnabled: v:true
-    \ }
-autocmd User LspSetup call LspOptionsSet(lspOpts)
+" let vim-lsp handle the logic and ALE handle the linting
+set omnifunc=lsp#complete
+" set completeopt=menuone,noinsert,noselect
+
+" Disable vim-lsp's own diagnostics UI
+
+let g:lsp_diagnostics_enabled = 0         " Disable vim-lsp's own error handling
+let g:lsp_highlights_enabled = 0          " Disable vim-lsp's text highlighting for errors
+let g:lsp_signs_enabled = 0
+
+" This allows ALE to show the LSP errors in its own nice UI
+let g:ale_linters = {
+\   'cpp': ['clangd', 'cppcheck'],
+\   'cmake': ['cmake-language-server', 'cmake-lint'],
+\}
+
+" 3. Make ALE look nice (Standard 2026 Arch style)
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
 
 
-set completeopt=menu,menuone,noselect,noinsert
-
-" Configure Clangd 21.x
-let lspServers = [#{
-    \	  name: 'clangd',
-    \	  filetype: ['c', 'cpp', 'objc', 'objcpp'],
-    \	  path: '/usr/bin/clangd',
-    \	  args: ['--background-index', '--clang-tidy', '--header-insertion=iwyu']
-    \ }]
-autocmd User LspSetup call LspAddServer(lspServers)
-
-
-" Useful Vim 9 mappings for this LSP
-nnoremap gd :LspGotoDefinition<CR>
-nnoremap gr :LspShowReferences<CR>
+" Mappings for prabirshrestha/vim-lsp (Compatible with your old setup)
+nnoremap gd :LspDefinition<CR>
+nnoremap gr :LspReferences<CR>
 nnoremap K  :LspHover<CR>
-nnoremap gl :LspDiag current<CR>
-nnoremap <leader>nd :LspDiag next \| LspDiag current<CR>
-nnoremap <leader>pd :LspDiag prev \| LspDiag current<CR>
+
+" Diagnostics (Replaces LspDiag)
+nnoremap gl :LspDocumentDiagnostics<CR>
+nnoremap <leader>nd :LspNextDiagnostic<CR>
+nnoremap <leader>pd :LspPreviousDiagnostic<CR>
+
+" Autocomplete (C-Space)
 inoremap <silent> <C-Space> <C-x><C-o>
 
-
-" Custom diagnostic sign characters
-autocmd User LspSetup call LspOptionsSet(#{
-    \   diagSignErrorText: '✘',
-    \   diagSignWarningText: '▲',
-    \   diagSignInfoText: '»',
-    \   diagSignHintText: '⚑',
-    \ })
-
-
-" Correct Path: Changed from /usr/local/bin to /usr/bin/clangd to match your clang --version output.
-" Inlay Hints: Clang 21 provides excellent type and parameter hints; 
-" inlayHintsEnabled: v:true, allows Vim 9 to display them inline.
-" IWYU: Added --header-insertion=iwyu (Include What You Use) in args. This lets clangd automatically add the correct #include statements when you complete a function from a different header.
-" Modern Mappings: Used <scriptcmd> which is the Vim 9 way to call functions more efficiently without needing the older :call syntax.

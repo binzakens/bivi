@@ -3,6 +3,8 @@ source ~/.vim/keybinds.vim
 source ~/.vim/plugins.vim
 source ~/.vim/colorscheme.vim
 
+source ~/.vim/cmake.vim
+
 source ~/.vim/fzf.vim
 source ~/.vim/lsp.vim
 
@@ -10,12 +12,6 @@ source ~/.vim/lsp.vim
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
 
-" This will enable code folding.
-" Use the marker method of folding.
-" augroup filetype_vim
-" 	autocmd!
-" 	autocmd FileType vim setlocal foldmethod=marker
-" augroup END
 
 
 " NERDTree section "
@@ -40,13 +36,10 @@ autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
 
 " STATUS LINE/ POWER LINE ------------------------------------------------------------ {{{
 
+
 set laststatus=2
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 
-" Search mappings: These will make it so that going to the next one in a
-" search will center on the line it's found in.
-nnoremap n nzzzv
-nnoremap N Nzzzv
 
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}

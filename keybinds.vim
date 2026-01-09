@@ -3,6 +3,7 @@
 let mapleader = " "
 
 " nnoremap <space> <nop>
+nnoremap <S-j> <nop>
 
 " Open netrw with <leader>cd
 nnoremap <silent> <leader>cd :Ex<CR>
@@ -12,6 +13,10 @@ nnoremap <silent> <leader>cd :Ex<CR>
 " Press " n" to turn off search highlighting
 nnoremap <silent> <leader>n :nohlsearch<CR>
 
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 " Naviagte between "BUFFERS" in Vim
 " Switching between the current buff and the previous buff normally, using
@@ -20,6 +25,7 @@ nnoremap <leader>b :ls<CR>:b<space>
 nnoremap <silent> <S-l> :bnext<CR>
 nnoremap <silent> <S-h> :bprev<CR>
 nnoremap <silent> [a :e #<CR>
+nnoremap <silent> [d :bdelete<CR>
 
 
                 " "QuickFix Lists" navigate
@@ -30,6 +36,7 @@ nnoremap <silent> [Q :cfirst<CR>
 
 nnoremap <silent> <leader>fl :clist<CR>
 nnoremap <silent> <leader>fo :copen<CR>
+nnoremap <silent> <leader>fp :cclose<CR>
 
 
 " You can split the "WINDOW" in Vim by typing :split (:sp) or :vsplit (:vs)
