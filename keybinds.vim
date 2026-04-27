@@ -62,8 +62,8 @@ nnoremap <space>O O<esc>
 
 
 " Toggle line numbers when copying in Vim
-map <silent> \m <esc>:set nu! relativenumber!<CR>
-imap <silent> \m <esc>:set nu! relativenumber!<CR>
+map <silent> \z <esc>:set nu! relativenumber!<CR>
+imap <silent> \z <esc>:set nu! relativenumber!<CR>
 
 
 " ALE on/off
